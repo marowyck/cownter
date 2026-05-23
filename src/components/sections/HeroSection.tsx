@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { TRUST_STATS, HERO_CONTENT } from "@/lib/mockData";
 import { DashboardMockup, FloatingCard } from "../../lib";
+import Link from "next/link";
 
 export function HeroSection() {
     return (
@@ -55,10 +56,12 @@ export function HeroSection() {
                             className="flex flex-col sm:flex-row gap-3 mb-12 animate-fade-up"
                             style={{ animationDelay: "0.3s" }}
                         >
-                            <Button variant="primary" size="lg">
-                                {HERO_CONTENT.cta1}
-                                <ArrowRight size={18} weight="bold" />
-                            </Button>
+                            <Link href="/login">
+                                <Button variant="primary" size="lg">
+                                    {HERO_CONTENT.cta1}
+                                    <ArrowRight size={18} weight="bold" />
+                                </Button>
+                            </Link>
                             <Button variant="outline" size="lg">
                                 <Play size={16} weight="fill" className="text-brand-600" />
                                 {HERO_CONTENT.cta2}

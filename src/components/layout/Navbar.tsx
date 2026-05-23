@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { List, X } from "@phosphor-icons/react";
+import { List, X, Cow } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { Cow } from "@phosphor-icons/react/dist/ssr";
 
 const NAV_LINKS = [
     { label: "Funcionalidades", href: "#funcionalidades" },
@@ -59,9 +58,11 @@ export function Navbar() {
 
                 {/* CTA */}
                 <div className="hidden md:flex items-center gap-3">
-                    <Button variant="ghost" size="sm">
-                        Entrar
-                    </Button>
+                    <a href="/login">
+                        <Button variant="ghost" size="sm">
+                            Entrar
+                        </Button>
+                    </a>
                     <Button variant="primary" size="sm">
                         Começar grátis
                     </Button>
@@ -97,9 +98,11 @@ export function Navbar() {
                         </li>
                     ))}
                     <li className="pt-3 flex flex-col gap-2">
-                        <Button variant="secondary" size="md" className="w-full">
-                            Entrar
-                        </Button>
+                        <a href="/login" className="w-full">
+                            <Button variant="secondary" size="md" className="w-full">
+                                Entrar
+                            </Button>
+                        </a>
                         <Button variant="primary" size="md" className="w-full">
                             Começar grátis
                         </Button>

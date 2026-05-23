@@ -2,6 +2,7 @@ import { ArrowRight, WhatsappLogo, Leaf, Lock, Phone, ChatCircle } from "@phosph
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { CTA_CONTENT, TRUST_INDICATORS } from "@/lib/mockData";
+import Link from "next/link";
 
 export function CTASection() {
     return (
@@ -38,10 +39,12 @@ export function CTASection() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <Button variant="primary" size="xl">
-                        {CTA_CONTENT.cta1}
-                        <ArrowRight size={20} weight="bold" />
-                    </Button>
+                    <Link href="/login">
+                        <Button variant="primary" size="xl">
+                            {CTA_CONTENT.cta1}
+                            <ArrowRight size={20} weight="bold" />
+                        </Button>
+                    </Link>
                     <Button
                         variant="outline"
                         size="xl"
