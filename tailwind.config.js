@@ -42,6 +42,7 @@ export default {
       animation: {
         float: "float 6s ease-in-out infinite",
         "float-slow": "float-slow 8s ease-in-out infinite",
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
         float: {
@@ -51,6 +52,10 @@ export default {
         "float-slow": {
           "0%, 100%": { transform: "translateY(0px)" },
           "50%": { transform: "translateY(-30px)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(-100% / 3))" },
         },
       },
     },
