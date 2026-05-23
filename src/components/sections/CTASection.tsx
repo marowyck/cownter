@@ -1,6 +1,7 @@
 import { ArrowRight, WhatsappLogo, Leaf, Lock, Phone, ChatCircle } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { CTA_CONTENT, TRUST_INDICATORS } from "@/lib/mockData";
 
 export function CTASection() {
     return (
@@ -24,22 +25,21 @@ export function CTASection() {
             <div className="container mx-auto px-4 md:px-6 max-w-5xl relative text-center">
                 <Badge variant="white" className="mb-6 inline-flex">
                     <Leaf size={16} weight="bold" className="text-brand-600" />
-                    14 dias grátis, sem cartão
+                    {CTA_CONTENT.badge}
                 </Badge>
 
                 <h2 className="font-display font-bold text-4xl md:text-6xl lg:text-7xl text-cream leading-[1.05] mb-6">
-                    Sua fazenda merece{" "}
-                    <span className="italic text-brand-400">tecnologia</span> de verdade.
+                    {CTA_CONTENT.title}{" "}
+                    <span className="italic text-brand-400">{CTA_CONTENT.titleHighlight}</span> {CTA_CONTENT.titleEnd}
                 </h2>
 
                 <p className="font-body text-cream/50 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-                    Junte-se a mais de 2.400 fazendas que já usam o COWNTER para organizar,
-                    controlar e crescer com segurança.
+                    {CTA_CONTENT.description}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                     <Button variant="primary" size="xl">
-                        Criar conta gratuita
+                        {CTA_CONTENT.cta1}
                         <ArrowRight size={20} weight="bold" />
                     </Button>
                     <Button
@@ -48,18 +48,13 @@ export function CTASection() {
                         className="border-white/20 text-cream/70 hover:border-white/40 hover:text-cream"
                     >
                         <WhatsappLogo size={20} className="text-green-400" />
-                        Falar no WhatsApp
+                        {CTA_CONTENT.cta2}
                     </Button>
                 </div>
 
                 {/* Trust indicators */}
                 <div className="flex flex-wrap justify-center gap-6 md:gap-10">
-                    {[
-                        { Icon: Lock, label: "Dados criptografados" },
-                        { Icon: Leaf, label: "Servidores no Brasil" },
-                        { Icon: Phone, label: "App iOS e Android" },
-                        { Icon: ChatCircle, label: "Suporte em português" },
-                    ].map(({ Icon, label }) => (
+                    {TRUST_INDICATORS.map(({ Icon, label }) => (
                         <div key={label} className="flex items-center gap-2 text-cream/40">
                             <Icon size={18} weight="bold" className="text-cream/60" />
                             <span className="font-body text-sm">{label}</span>

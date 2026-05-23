@@ -4,33 +4,7 @@ import { useState } from "react";
 import { Plus, Minus } from "@phosphor-icons/react";
 import { Section, SectionLabel, SectionTitle } from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
-
-const FAQS = [
-  {
-    q: "Quais tipos de animais o COWNTER suporta?",
-    a: "O COWNTER suporta bovinos, equinos, suínos, ovinos, caprinos e outros tipos de animais. O suporte varia conforme o plano: o Broto cobre bovinos e equinos, enquanto o Pastagem e Latifúndio incluem todos os tipos.",
-  },
-  {
-    q: "Posso usar o COWNTER no celular?",
-    a: "Sim! O COWNTER tem aplicativo nativo para iOS e Android, com modo offline para uso em áreas sem sinal — muito comum no interior. Quando a conexão voltar, os dados sincronizam automaticamente.",
-  },
-  {
-    q: "Como funciona a integração com fazendas próximas?",
-    a: "A integração permite que fazendas parceiras compartilhem dados de rastreabilidade de animais. Para conectar, ambas as fazendas precisam estar no plano Pastagem ou superior e aceitar mutuamente a conexão.",
-  },
-  {
-    q: "Os veterinários parceiros são exclusivos de qual plano?",
-    a: "O acesso aos veterinários parceiros é exclusivo do plano Latifúndio. Você pode agendar consultas remotas por vídeo ou visitas presenciais com veterinários certificados credenciados à plataforma.",
-  },
-  {
-    q: "O que acontece se eu ultrapassar o limite de cabeças do meu plano?",
-    a: "Você receberá um alerta quando estiver próximo do limite. Ultrapassar o limite bloqueia o cadastro de novos animais, mas seus dados ficam intactos. Você pode fazer upgrade para o próximo plano a qualquer momento.",
-  },
-  {
-    q: "Meus dados estão seguros?",
-    a: "Sim. Todos os dados são criptografados com AES-256 em trânsito e em repouso. Os servidores ficam no Brasil (em conformidade com a LGPD) e fazemos backups automáticos diários. Você pode exportar seus dados a qualquer momento.",
-  },
-];
+import { FAQS, FAQ_SECTION_CONTENT } from "@/lib/mockData";
 
 export function FAQSection() {
   const [open, setOpen] = useState<number | null>(0);
@@ -39,14 +13,13 @@ export function FAQSection() {
     <Section className="bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         <div className="lg:col-span-1">
-          <SectionLabel>FAQ</SectionLabel>
+          <SectionLabel>{FAQ_SECTION_CONTENT.label}</SectionLabel>
           <SectionTitle>
-            Dúvidas{" "}
-            <span className="text-gradient italic">frequentes</span>
+            {FAQ_SECTION_CONTENT.title}{" "}
+            <span className="text-gradient italic">{FAQ_SECTION_CONTENT.titleHighlight}</span>
           </SectionTitle>
           <p className="font-body text-dark/55 text-base leading-relaxed">
-            Não encontrou sua resposta? Entre em contato com nosso suporte via
-            WhatsApp ou e-mail.
+            {FAQ_SECTION_CONTENT.description}
           </p>
         </div>
 
