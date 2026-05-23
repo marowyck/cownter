@@ -370,3 +370,29 @@ export const INTEGRATIONS_SECTION_CONTENT = {
   integrationTitle: "Sua fazenda conectada com",
   integrationTitleHighlight: "o ecossistema",
 };
+
+// ========================
+// PARTNERS SECTION
+// ========================
+export const PARTNERS = [
+  {
+    name: "AgroBrasília",
+    logo: "/AgroBrasilia.png",
+  },
+  {
+    name: "CNA SENAR",
+    logo: "/CNASENAR.png",
+  },
+  {
+    name: "CFMV",
+    logo: "/Logo-CFMV-Horizontal-1024x350-600x204.png",
+  },
+  {
+    name: "ABIEC",
+    logo: "/logo_abiec.png",
+  },
+  {
+    name: "Embrapa",
+    logo: "/embrapa-logo.png",
+  },
+];
