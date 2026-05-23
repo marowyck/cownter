@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "COWNTER — O Organizador Inteligente da Sua Fazenda",
+  title: "COWNTER",
   description:
     "Gerencie animais, estoque, vacinações, geocercas e muito mais. A plataforma completa para pequenas, médias e grandes propriedades rurais.",
   keywords: ["fazenda", "gestão rural", "bovinos", "animais", "pecuária", "agronegócio"],
