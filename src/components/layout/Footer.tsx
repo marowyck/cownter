@@ -5,6 +5,7 @@ import {
     Envelope,
     MapPin,
     Phone,
+    Cow
 } from "@phosphor-icons/react/dist/ssr";
 
 const FOOTER_LINKS = {
@@ -44,10 +45,10 @@ export function Footer() {
                     <div className="lg:col-span-2">
                         <a href="#" className="flex items-center gap-2 mb-5">
                             <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center shadow-md shadow-brand-600/30">
-                                <span className="text-white font-display font-bold text-lg leading-none">C</span>
+                                <span className="text-white font-display font-bold text-lg leading-none"><Cow size={24}/></span>
                             </div>
                             <span className="font-display font-bold text-xl text-cream tracking-tight">
-                                COWN<span className="text-brand-400">TER</span>
+                                COW<span className="text-brand-400">NTER</span>
                             </span>
                         </a>
                         <p className="font-body text-sm leading-relaxed text-cream/50 mb-6 max-w-xs">
@@ -64,15 +65,15 @@ export function Footer() {
                                 contato@cownter.com.br
                             </a>
                             <a
-                                href="tel:+5534999999999"
+                                href="tel:+5535999999999"
                                 className="flex items-center gap-2 text-sm text-cream/50 hover:text-brand-400 transition-colors"
                             >
                                 <Phone size={15} />
-                                (34) 9 9999-9999
+                                (35) 9 9999-9999
                             </a>
                             <span className="flex items-center gap-2 text-sm text-cream/50">
                                 <MapPin size={15} />
-                                Triângulo Mineiro, MG
+                                Passos, MG
                             </span>
                         </div>
 

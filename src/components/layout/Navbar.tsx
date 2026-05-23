@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Cow } from "@phosphor-icons/react/dist/ssr";
 
 const NAV_LINKS = [
     { label: "Funcionalidades", href: "#funcionalidades" },
@@ -35,10 +36,10 @@ export function Navbar() {
                 {/* Logo */}
                 <a href="#" className="flex items-center gap-2 group">
                     <div className="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center shadow-md shadow-brand-600/30 group-hover:bg-brand-700 transition-colors">
-                        <span className="text-white font-display font-bold text-lg leading-none">C</span>
+                        <span className="text-white font-display font-bold text-lg leading-none"><Cow size={24}/></span>
                     </div>
                     <span className="font-display font-bold text-xl text-dark tracking-tight">
-                        COWN<span className="text-brand-600">TER</span>
+                        COW<span className="text-brand-600">NTER</span>
                     </span>
                 </a>
 
