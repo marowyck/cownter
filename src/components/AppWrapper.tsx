@@ -3,7 +3,6 @@
 import { useAuth } from '@/contexts/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import AppLayout from './layout';
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -30,5 +29,5 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
     return null;
   }
 
-  return <AppLayout>{children}</AppLayout>;
+  return <>{children}</>;
 }
