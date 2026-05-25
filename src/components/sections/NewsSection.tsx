@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Newspaper,
   ArrowRight,
@@ -8,6 +10,7 @@ import {
   CloudRain,
   FileText,
 } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -22,6 +25,7 @@ const NEWS = [
       "Com demanda aquecida de frigoríficos e menor oferta de animais terminados, os preços subiram cerca de 4% na última semana.",
     time: "Há 2 horas",
     Icon: ArrowUpRight,
+    image: "/noticias/lida-do-boi-gordo.jpg",
   },
   {
     category: "Saúde Animal",
@@ -31,6 +35,7 @@ const NEWS = [
       "MAPA emitiu alerta para produtores das regiões limítrofes reforçarem vacinação e monitoramento do rebanho imediatamente.",
     time: "Há 5 horas",
     Icon: Warning,
+    image: "/noticias/ULTIMA-VACINACAO-CONTRA-A-FEBRE-AFTOSA-21-x-14-cm-1.png",
   },
   {
     category: "Clima",
@@ -40,6 +45,7 @@ const NEWS = [
       "A Embrapa e o Inmet indicam condições favoráveis para pastagens e enchimento de reservatórios nas próximas semanas.",
     time: "Há 8 horas",
     Icon: CloudRain,
+    image: "/noticias/manejoPastagem.jpg",
   },
   {
     category: "Legislação",
@@ -49,6 +55,7 @@ const NEWS = [
       "Produtores têm até 30 de outubro para adequar os cadastros dos animais ao novo sistema de rastreabilidade bovina.",
     time: "Há 1 dia",
     Icon: FileText,
+    image: "/noticias/Mao-de-obra-na-pecuaria-veja-como-capacitar-sua-propriedade-Thumbnail.png",
   },
 ];
 
@@ -104,9 +111,20 @@ function NewsCard({
   summary,
   time,
   Icon,
+  image,
 }: (typeof NEWS)[number]) {
   return (
-    <Card hover className="group">
+    <Card hover className="group overflow-hidden">
+      {image && (
+        <div className="relative w-full h-40 bg-brand-100">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      )}
       <CardContent className="pt-5">
         <div className="flex items-start gap-4">
           <div className="w-8 h-8 rounded-lg bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5">

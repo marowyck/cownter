@@ -367,7 +367,7 @@ export const AGRO_NEWS = [
     date: '2026-05-22',
     category: 'Mercado',
     source: 'Abiec',
-    imageUrl: '📈',
+    imageUrl: '/noticias/lida-do-boi-gordo.jpg',
   },
   {
     id: 2,
@@ -376,7 +376,7 @@ export const AGRO_NEWS = [
     date: '2026-05-20',
     category: 'Saúde',
     source: 'MAPA',
-    imageUrl: '💉',
+    imageUrl: '/noticias/ULTIMA-VACINACAO-CONTRA-A-FEBRE-AFTOSA-21-x-14-cm-1.png',
   },
   {
     id: 3,
@@ -385,7 +385,7 @@ export const AGRO_NEWS = [
     date: '2026-05-18',
     category: 'Sustentabilidade',
     source: 'Embrapa',
-    imageUrl: '🌱',
+    imageUrl: '/noticias/manejoPastagem.jpg',
   },
   {
     id: 4,
@@ -394,7 +394,7 @@ export const AGRO_NEWS = [
     date: '2026-05-15',
     category: 'Manejo',
     source: 'Pecuária Brasil',
-    imageUrl: '🌾',
+    imageUrl: '/noticias/Mao-de-obra-na-pecuaria-veja-como-capacitar-sua-propriedade-Thumbnail.png',
   },
 ];
 

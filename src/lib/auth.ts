@@ -3,9 +3,9 @@ export const MOCK_USERS = {
   demo: {
     email: 'demo@cownter.com',
     password: 'demo123',
-    name: 'Seu Geraldo',
+    name: 'Geraldo Neto',
     farm: 'Fazenda Demo',
-    plan: 'Pastagem'
+    plan: 'Latifúndio'
   }
 };
 
