@@ -1,10 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { Plus, MapPin, Eye, Prohibit, List as ListIcon, MapTrifold, Trash } from '@phosphor-icons/react';
-import { SimpleGeocercaMap } from '@/components/geocercas';
 import { GeocercaPolygon } from '@/types/geocerca';
 import { GEOFENCES } from '@/lib/appConstants';
+
+const SimpleGeocercaMap = dynamic(
+  () => import('@/components/geocercas').then((mod) => ({ default: mod.SimpleGeocercaMap })),
+  { ssr: false }
+);
 
 export default function GeocercasPage() {
   const [geocercas, setGeocercas] = useState<GeocercaPolygon[]>([]);
