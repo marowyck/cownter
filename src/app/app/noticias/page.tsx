@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { MagnifyingGlass, Newspaper } from '@phosphor-icons/react';
 import { AGRO_NEWS } from '@/lib/appConstants';
 
@@ -61,9 +62,14 @@ export default function NoticiasPage() {
             key={index}
             className="bg-white rounded-xl border border-brand-100 overflow-hidden hover:shadow-lg transition-all hover:border-brand-300 cursor-pointer group"
           >
-            {/* Image/Icon */}
-            <div className="bg-gradient-to-br from-brand-50 to-brand-100 h-48 flex items-center justify-center text-6xl group-hover:scale-105 transition-transform overflow-hidden">
-              {news.imageUrl}
+            {/* Image */}
+            <div className="relative h-48 bg-brand-50 overflow-hidden group-hover:scale-105 transition-transform">
+              <Image
+                src={news.imageUrl}
+                alt={news.title}
+                fill
+                className="object-cover"
+              />
             </div>
 
             {/* Content */}

@@ -4,14 +4,16 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/Button';
-import { Cow } from '@phosphor-icons/react';
+import { CaretRightIcon, Cow } from '@phosphor-icons/react';
 import Link from 'next/link';
+import ImageCarousel from '@/components/auth/ImageCarousel';
+import { MOCK_USERS } from '@/lib/auth';
 
 export default function LoginPage() {
   const router = useRouter();
   const { login, isLoading } = useAuth();
-  const [email, setEmail] = useState('demo@cownter.com');
-  const [password, setPassword] = useState('demo123');
+  const [email, setEmail] = useState(MOCK_USERS.demo.email);
+  const [password, setPassword] = useState(MOCK_USERS.demo.password);
   const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,22 +29,31 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-brand-50 to-cream flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen bg-white flex">
+      {/* Coluna Esquerda - Carrossel de Imagens */}
+      <div className="hidden lg:flex lg:w-4/6">
+        <ImageCarousel />
+      </div>
+
+      {/* Coluna Direita - Formulário de Login */}
+      <div className="w-full lg:w-2/6 flex flex-col items-center justify-center px-6 py-12 sm:px-8 bg-gradient-to-br from-white via-white to-brand-50 relative">
+        {/* Botão Voltar */}
+        <Link
+          href="/"
+          className="absolute top-6 left-6 text-brand-600 hover:text-brand-700 transition-colors"
+          aria-label="Voltar"
+        >
+          <CaretRightIcon size={24} className="rotate-180" />
+        </Link>
+
         {/* Logo e Título */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-brand-600 rounded-lg flex items-center justify-center">
-              <Cow size={24} weight="fill" className="text-white" />
-            </div>
-            <span className="text-3xl font-bold text-brand-600">COWNTER</span>
-          </div>
-          <h1 className="text-2xl font-bold text-dark mb-2">Bem-vindo de volta</h1>
-          <p className="text-dark/60">Faça login na sua conta</p>
+        <div className="mb-12">
+          <h1 className="text-3xl font-bold text-dark mb-2">Bem-vindo de volta</h1>
+          <p className="text-dark/60">Faça login na sua conta para continuar</p>
         </div>
 
         {/* Card de Login */}
-        <div className="bg-white rounded-2xl border border-brand-100 shadow-sm p-8 mb-6">
+        <div className="w-full bg-white rounded-2xl p-8 mb-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email */}
             <div>
@@ -76,7 +87,7 @@ export default function LoginPage() {
 
             {/* Erro */}
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm font-medium">
                 {error}
               </div>
             )}
@@ -85,33 +96,23 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="w-full"
+              className="w-full py-3 text-base"
               variant="primary"
             >
               {isLoading ? 'Entrando...' : 'Entrar'}
             </Button>
           </form>
 
-          {/* Info para Demo */}
+          {/* Divisor */}
           <div className="mt-6 pt-6 border-t border-brand-100">
-            <p className="text-xs text-dark/50 text-center mb-3">
-              Dados de demonstração pré-preenchidos:
+            <p className="text-xs text-dark/50 text-center mb-4 font-medium">
+              DADOS DE DEMONSTRAÇÃO
             </p>
-            <div className="space-y-1 text-xs text-dark/60 font-mono text-center">
-              <p>Email: <span className="font-semibold">demo@cownter.com</span></p>
-              <p>Senha: <span className="font-semibold">demo123</span></p>
+            <div className="space-y-2 text-xs text-dark/60 font-mono text-center bg-brand-50 rounded-lg p-3">
+              <p><span className="text-dark/80">Email:</span> {MOCK_USERS.demo.email}</p>
+              <p><span className="text-dark/80">Senha:</span> {MOCK_USERS.demo.password}</p>
             </div>
           </div>
-        </div>
-
-        {/* Voltar para Landing */}
-        <div className="text-center">
-          <Link
-            href="/"
-            className="text-brand-600 hover:text-brand-700 font-medium text-sm transition-colors"
-          >
-            ← Voltar para Landing Page
-          </Link>
         </div>
       </div>
     </div>
