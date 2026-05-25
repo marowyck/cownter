@@ -57,6 +57,11 @@ export function SimpleGeocercaMap({
   const map = useRef<L.Map | null>(null);
   const drawnItems = useRef<L.FeatureGroup | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mapType, setMapType] = useState<'normal' | 'satellite'>('normal');
+  const tileLayersRef = useRef<{
+    normal: L.TileLayer | null;
+    satellite: L.TileLayer | null;
+  }>({ normal: null, satellite: null });
 
   useEffect(() => {
     if (map.current) return;
@@ -65,11 +70,22 @@ export function SimpleGeocercaMap({
     // Inicializar mapa
     map.current = L.map(mapContainer.current).setView([-15.7939, -47.8822], 4);
 
-    // Tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Tile layer Normal (OpenStreetMap)
+    const normalLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
       maxZoom: 19,
     }).addTo(map.current);
+    tileLayersRef.current.normal = normalLayer;
+
+    // Tile layer Satélite (Esri Satellite)
+    const satelliteLayer = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      {
+        attribution: 'Tiles © Esri',
+        maxZoom: 19,
+      }
+    );
+    tileLayersRef.current.satellite = satelliteLayer;
 
     // Feature group para elementos desenhados
     drawnItems.current = new L.FeatureGroup();
@@ -102,6 +118,23 @@ export function SimpleGeocercaMap({
       map.current = null;
     };
   }, []);
+
+  // Trocar entre mapas normal e satélite
+  useEffect(() => {
+    if (!map.current || !tileLayersRef.current.normal || !tileLayersRef.current.satellite) return;
+
+    if (mapType === 'normal') {
+      map.current.removeLayer(tileLayersRef.current.satellite);
+      if (!map.current.hasLayer(tileLayersRef.current.normal)) {
+        tileLayersRef.current.normal.addTo(map.current);
+      }
+    } else {
+      map.current.removeLayer(tileLayersRef.current.normal);
+      if (!map.current.hasLayer(tileLayersRef.current.satellite)) {
+        tileLayersRef.current.satellite.addTo(map.current);
+      }
+    }
+  }, [mapType]);
 
   // Adicionar geocercas existentes
   useEffect(() => {
@@ -227,6 +260,31 @@ export function SimpleGeocercaMap({
           </div>
         </div>
       )}
+
+      {/* Map Type Selector */}
+      <div className="absolute top-4 right-4 bg-white rounded-lg shadow-lg overflow-hidden z-[999] flex">
+        <button
+          onClick={() => setMapType('normal')}
+          className={`px-4 py-2 font-medium text-sm transition-colors ${
+            mapType === 'normal'
+              ? 'bg-brand-600 text-white'
+              : 'bg-white text-dark hover:bg-gray-100'
+          }`}
+        >
+          Mapa Normal
+        </button>
+        <div className="w-px bg-brand-200" />
+        <button
+          onClick={() => setMapType('satellite')}
+          className={`px-4 py-2 font-medium text-sm transition-colors ${
+            mapType === 'satellite'
+              ? 'bg-brand-600 text-white'
+              : 'bg-white text-dark hover:bg-gray-100'
+          }`}
+        >
+          Satélite
+        </button>
+      </div>
 
       <div className="absolute bottom-4 left-4 bg-white rounded-lg shadow-lg p-3 max-w-sm z-[999] text-sm">
         <p className="font-medium text-dark mb-2">✏️ Desenhar Geocerca</p>
