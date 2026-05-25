@@ -172,7 +172,7 @@ export function GeocercaMap({
 
       if (layerType === 'polygon' && drawnItems.current) {
         // Extrair coordenadas
-        const latlngs = (layer as L.Polygon).getLatLngs()[0];
+        const latlngs = (layer as L.Polygon).getLatLngs()[0] as L.LatLng[];
         const coordinates: Coordinates[] = latlngs.map((latlng) => ({
           lat: latlng.lat,
           lng: latlng.lng,
